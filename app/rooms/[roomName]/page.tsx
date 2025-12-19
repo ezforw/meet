@@ -27,7 +27,7 @@ export default async function Page({
 
   // Check authentication cookie
   const cookieStore = await cookies();
-  const authCookie = cookieStore.get('room_auth_777');
+  const authCookie = cookieStore.get('room_auth');
   const isAuthenticated = verifyAuthCookie(authCookie?.value);
 
   // If not authenticated, show password form

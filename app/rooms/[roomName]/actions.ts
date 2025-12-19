@@ -3,8 +3,8 @@
 import { cookies } from 'next/headers';
 import { generateSignedCookie } from './auth-utils';
 
-const COOKIE_NAME = 'room_auth_777';
-const COOKIE_MAX_AGE = 60 * 60 * 24; // 24 hours
+const COOKIE_NAME = 'room_auth';
+const COOKIE_MAX_AGE = 60 * 60 * 3; // 3 hours
 
 /**
  * Server action to verify room password
