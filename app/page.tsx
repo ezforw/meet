@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { Suspense, useState } from 'react';
 import { encodePassphrase, generateRoomId, randomString } from '@/lib/client-utils';
@@ -166,7 +167,7 @@ export default function Page() {
       <main className={styles.main} data-lk-theme="default">
         <div className="header">
           {/* <img src="/images/livekit-meet-home.svg" alt="LiveKit Meet" width="360" height="45" /> */}
-          <a href="/rooms/777" style={{ textDecoration: 'none' }}>
+          <Link href="/rooms/777" style={{ textDecoration: 'none' }}>
             <h1>
               进入弹唱教学
               {/* Open source video conferencing app built on{' '}
@@ -179,7 +180,7 @@ export default function Page() {
             </a>{' '}
             and Next.js. */}
             </h1>
-          </a>
+          </Link>
 
         </div>
         <Suspense fallback="加载中">
