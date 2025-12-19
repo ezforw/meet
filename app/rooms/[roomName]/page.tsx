@@ -1,5 +1,8 @@
 import * as React from 'react';
+import { cookies } from 'next/headers';
 import { PageClientImpl } from './PageClientImpl';
+import { PasswordProtection } from './PasswordProtection';
+import { verifyAuthCookie } from './auth-utils';
 import { isVideoCodec } from '@/lib/types';
 
 export default async function Page({
@@ -22,6 +25,17 @@ export default async function Page({
       : 'vp9';
   const hq = _searchParams.hq === 'true' ? true : false;
 
+  // Check authentication cookie
+  const cookieStore = await cookies();
+  const authCookie = cookieStore.get('room_auth_777');
+  const isAuthenticated = verifyAuthCookie(authCookie?.value);
+
+  // If not authenticated, show password form
+  if (!isAuthenticated) {
+    return <PasswordProtection />;
+  }
+
+  // Authenticated, show the room
   return (
     <PageClientImpl
       roomName={_params.roomName}
