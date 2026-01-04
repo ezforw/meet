@@ -8,13 +8,14 @@ import {
 } from '@livekit/components-react';
 import { BackgroundBlur, VirtualBackground } from '@livekit/track-processors';
 import { isLocalTrack, LocalTrackPublication, Track } from 'livekit-client';
+import { t } from './translations';
 const Desk = '/background-images/samantha-gades-BlIhVfXbi9s-unsplash.jpg';
 const Nature = '/background-images/ali-kazal-tbw_KQE3Cbg-unsplash.jpg';
 
 // Background image paths
 const BACKGROUND_IMAGES = [
-  { name: 'Desk', path: Desk },
-  { name: 'Nature', path: Nature },
+  { name: t('Desk'), path: Desk },
+  { name: t('Nature'), path: Nature },
 ];
 
 // Background options
@@ -76,14 +77,14 @@ export function CameraSettings() {
       )}
 
       <section className="lk-button-group">
-        <TrackToggle source={Track.Source.Camera}>Camera</TrackToggle>
+        <TrackToggle source={Track.Source.Camera}>{t('Camera')}</TrackToggle>
         <div className="lk-button-group-menu">
           <MediaDeviceMenu kind="videoinput" />
         </div>
       </section>
 
       <div style={{ marginTop: '10px' }}>
-        <div style={{ marginBottom: '8px' }}>Background Effects</div>
+        <div style={{ marginBottom: '8px' }}>{t('Background Effects')}</div>
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
           <button
             onClick={() => selectBackground('none')}
@@ -94,7 +95,7 @@ export function CameraSettings() {
               minWidth: '80px',
             }}
           >
-            None
+            {t('None')}
           </button>
 
           <button
@@ -132,7 +133,7 @@ export function CameraSettings() {
                 fontSize: '12px',
               }}
             >
-              Blur
+              {t('Blur')}
             </span>
           </button>
 

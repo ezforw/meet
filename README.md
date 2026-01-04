@@ -1,4 +1,29 @@
-pm2 start "pnpm start" --name meet
+`pm2 start "pnpm start" --name meet`
+
+`watch -n 2 ./vp_stats.sh`
+
+List active rooms	`lk room list`
+See who is in a room	`lk room participants list <room-name>`
+Generate a token manually	`lk token create --room <name> --identity <user>`
+Delete a stuck room	`lk room delete <room-name>`
+
+To see detailed stats (bitrate, packet loss, etc.) for a specific person:
+`lk room participants get --room gk91-xe1d <PARTICIPANT_IDENTITY>`
+
+Mute someone	`lk room participants update --mute --room gk91-xe1d <IDENTITY>`
+Kick someone	`lk room participants remove --room gk91-xe1d <IDENTITY>`
+Watch logs	`docker-compose logs -f livekit-server`
+
+See logs
+Just the last 100 lines	`docker-compose logs --tail 100`
+Live stream new lines	`docker-compose logs -f`
+Logs from last 10 mins	`docker-compose logs --since 10m`
+Only the Meet client logs	`docker-compose logs meet-client`
+
+`docker-compose logs livekit-server | grep -i "error"`
+`docker-compose logs --since 5m livekit-server`
+`docker-compose logs -f --tail 10 livekit-server`
+`docker-compose logs --tail 50 livekit-server`
 
 <a href="https://livekit.io/">
   <img src="./.github/assets/livekit-mark.png" alt="LiveKit logo" width="100" height="100">

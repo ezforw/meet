@@ -11,10 +11,11 @@ import {
 import styles from '../styles/SettingsMenu.module.css';
 import { CameraSettings } from './CameraSettings';
 import { MicrophoneSettings } from './MicrophoneSettings';
+import { t } from './translations';
 /**
  * @alpha
  */
-export interface SettingsMenuProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface SettingsMenuProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 /**
  * @alpha
@@ -26,8 +27,8 @@ export function SettingsMenu(props: SettingsMenuProps) {
 
   const settings = React.useMemo(() => {
     return {
-      media: { camera: true, microphone: true, label: 'Media Devices', speaker: true },
-      recording: recordingEndpoint ? { label: 'Recording' } : undefined,
+      media: { camera: true, microphone: true, label: t('Media Devices'), speaker: true },
+      recording: recordingEndpoint ? { label: t('Recording') } : undefined,
     };
   }, []);
 
@@ -98,7 +99,7 @@ export function SettingsMenu(props: SettingsMenuProps) {
           <>
             {settings.media && settings.media.camera && (
               <>
-                <h3>Camera</h3>
+                <h3>{t('Camera')}</h3>
                 <section>
                   <CameraSettings />
                 </section>
@@ -106,7 +107,7 @@ export function SettingsMenu(props: SettingsMenuProps) {
             )}
             {settings.media && settings.media.microphone && (
               <>
-                <h3>Microphone</h3>
+                <h3>{t('Microphone')}</h3>
                 <section>
                   <MicrophoneSettings />
                 </section>
@@ -114,9 +115,9 @@ export function SettingsMenu(props: SettingsMenuProps) {
             )}
             {settings.media && settings.media.speaker && (
               <>
-                <h3>Speaker & Headphones</h3>
+                <h3>{t('Speaker & Headphones')}</h3>
                 <section className="lk-button-group">
-                  <span className="lk-button">Audio Output</span>
+                  <span className="lk-button">{t('Audio Output')}</span>
                   <div className="lk-button-group-menu">
                     <MediaDeviceMenu kind="audiooutput"></MediaDeviceMenu>
                   </div>
@@ -127,15 +128,15 @@ export function SettingsMenu(props: SettingsMenuProps) {
         )}
         {activeTab === 'recording' && (
           <>
-            <h3>Record Meeting</h3>
+            <h3>{t('Record Meeting')}</h3>
             <section>
               <p>
                 {isRecording
-                  ? 'Meeting is currently being recorded'
-                  : 'No active recordings for this meeting'}
+                  ? t('Meeting is currently being recorded')
+                  : t('No active recordings for this meeting')}
               </p>
               <button disabled={processingRecRequest} onClick={() => toggleRoomRecording()}>
-                {isRecording ? 'Stop' : 'Start'} Recording
+                {isRecording ? t('Stop') : t('Start')} {t('Recording')}
               </button>
             </section>
           </>
@@ -146,7 +147,7 @@ export function SettingsMenu(props: SettingsMenuProps) {
           className={`lk-button`}
           onClick={() => layoutContext?.widget.dispatch?.({ msg: 'toggle_settings' })}
         >
-          Close
+          {t('Close')}
         </button>
       </div>
     </div>

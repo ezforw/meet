@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React, { Suspense, useState } from 'react';
 import { encodePassphrase, generateRoomId, randomString } from '@/lib/client-utils';
 import styles from '../styles/Home.module.css';
+import { t } from '@/lib/translations';
 
 function Tabs(props: React.PropsWithChildren<{}>) {
   const searchParams = useSearchParams();
@@ -55,9 +56,9 @@ function DemoMeetingTab(props: { label: string }) {
   };
   return (
     <div className={styles.tabContent}>
-      <p style={{ margin: 0 }}>Try LiveKit Meet for free with our live demo project.</p>
+      <p style={{ margin: 0 }}>{t('Try LiveKit Meet for free with our live demo project.')}</p>
       <button style={{ marginTop: '1rem' }} className="lk-button" onClick={startMeeting}>
-        Start Meeting
+        {t('Start Meeting')}
       </button>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
@@ -67,11 +68,11 @@ function DemoMeetingTab(props: { label: string }) {
             checked={e2ee}
             onChange={(ev) => setE2ee(ev.target.checked)}
           ></input>
-          <label htmlFor="use-e2ee">Enable end-to-end encryption</label>
+          <label htmlFor="use-e2ee">{t('Enable end-to-end encryption')}</label>
         </div>
         {e2ee && (
           <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-            <label htmlFor="passphrase">Passphrase</label>
+            <label htmlFor="passphrase">{t('Passphrase')}</label>
             <input
               id="passphrase"
               type="password"
@@ -107,7 +108,7 @@ function CustomConnectionTab(props: { label: string }) {
   return (
     <form className={styles.tabContent} onSubmit={onSubmit}>
       <p style={{ marginTop: 0 }}>
-        Connect LiveKit Meet with a custom server using LiveKit Cloud or LiveKit Server.
+        {t('Connect LiveKit Meet with a custom server using LiveKit Cloud or LiveKit Server.')}
       </p>
       <input
         id="serverUrl"
@@ -132,11 +133,11 @@ function CustomConnectionTab(props: { label: string }) {
             checked={e2ee}
             onChange={(ev) => setE2ee(ev.target.checked)}
           ></input>
-          <label htmlFor="use-e2ee">Enable end-to-end encryption</label>
+          <label htmlFor="use-e2ee">{t('Enable end-to-end encryption')}</label>
         </div>
         {e2ee && (
           <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-            <label htmlFor="passphrase">Passphrase</label>
+            <label htmlFor="passphrase">{t('Passphrase')}</label>
             <input
               id="passphrase"
               type="password"
@@ -155,7 +156,7 @@ function CustomConnectionTab(props: { label: string }) {
         className="lk-button"
         type="submit"
       >
-        Connect
+        {t('Connect')}
       </button>
     </form>
   );
@@ -183,7 +184,7 @@ export default function Page() {
           </Link>
 
         </div>
-        <Suspense fallback="加载中">
+        <Suspense fallback={t('加载中')}>
           {/* <DemoMeetingTab label="Demo" /> */}
           {/* <Tabs>
             <DemoMeetingTab label="Demo" />
