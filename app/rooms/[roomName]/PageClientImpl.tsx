@@ -33,7 +33,7 @@ import { t } from '@/lib/translations';
 
 const CONN_DETAILS_ENDPOINT =
   process.env.NEXT_PUBLIC_CONN_DETAILS_ENDPOINT ?? '/api/connection-details';
-const SHOW_SETTINGS_MENU = process.env.NEXT_PUBLIC_SHOW_SETTINGS_MENU == 'true';
+const SHOW_SETTINGS_MENU = false; // process.env.NEXT_PUBLIC_SHOW_SETTINGS_MENU == 'true';
 
 export function PageClientImpl(props: {
   roomName: string;
